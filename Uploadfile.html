@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <title>UploadFiles</title>
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    /* background-color: rgb(240, 150, 240); */
+  }
+
+  nav {
+    /* height: fit-content;
+*/
+    color: black;
+  }
+
+  nav ul {
+    background-color: azure;
+    display: flex;
+    flex-direction: row;
+  }
+
+  nav li {
+    margin: 10px;
+    border: 2px solid rgb(248, 226, 226);
+    border-radius: 5px;
+    list-style: none;
+  }
+
+  nav a {
+    font-size: 18px;
+    text-decoration: none;
+    color: black;
+  }
+
+  /* body {
+    background-image: url('Background CV.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+  } */
+
+  /* 
+  h1 {
+    text-align: center;
+    margin-top: 75px;
+  } */
+</style>
+
+<body bgcolor="pink">
+  <nav>
+    <ul>
+      <li><a color: href="./home.html">Home</a></li>
+      <li><a href="./Retrievefile.html">Retrieve File</a></li>
+      <li><a href="./Uploadfile.html">Upload File</a></li>
+      <li><a href="./Registration.html">Signup</a></li>
+      <li><a href="./login.html">Login</a></li>
+      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+      <li>
+
+        <h4>
+        </h4> Welcome :
+        <script>document.write(localStorage.getItem('name'));</script>
+        </h4>
+      </li>
+      <li> <button onclick="Logout();" style="float: right; cursor: pointer;">Logout</button></li>
+    </ul>
+
+
+    </ul>
+  </nav>
+  <h1 align="center"> COST EFFECTIVE AUTHENTIC AND ANONYMOUS DATA SHARING WITH FORWARD SECURITY </h1>
+  <center>
+    <br><br><br><br><br><br><br><br>
+    <p>Click on the "Choose File" button to upload a file:<br> File Id : 3 </p>
+
+
+    <label for="myfile">Select a file:</label>
+    <input type="file" name="aps" id="myfile1" accept=".pdf" />
+    <input type="hidden" name="" id="txtAttachment" />
+    <br>
+    <br>
+    <input type="submit" value="Send" background-color="cyan" />
+    <h3 id="password"></h3>
+    <button id="btnDownload" onClick="downloadFile()"> Download</button>
+
+  </center>
+
+  <pre>
+<center>
+<table border=3>
+<tr>
+<th >_____Listed Users_____</th>
+<th>_____Cost_____</th>
+<th>_____Option_____</th>
+</tr>
+<tr>
+<td><br> User 1 <br></td>
+<td><br>20<br></td>
+<td><br><input type="submit" onclick="alert('File Sent successfully ....')" value="Send"><br></td>
+</tr>
+<tr>
+<td><br>User 2<br></td>
+<td><br>45<br></td>
+<td><br><input type="submit" onclick="alert('File Sent successfully ....')" value="Send"><br></td>
+</tr>
+<tr>
+<td><br>User 3<br></td>
+<td><br>60<br></td>
+<td><br><input type="submit" onclick="alert('File Sent successfully ....')" value="Send"><br></td>
+</tr>
+<tr>
+  <td><br>User 4<br></td>
+  <td><br>10<br></td>
+  <td><br><input type="submit" onclick="alert('File Sent successfully ....')" value="Send"><br></td>
+</tr>
+<tr>
+  <td><br>User 5<br></td>
+  <td><br>60<br></td>
+  <td><br><input type="submit" onclick="alert('File Sent successfully ....')" value="Send" ><br></td>
+</tr>
+</table>
+</center>
+</pre>
+  </form>
+
+</body>
+<script>
+  let name = localStorage.getItem('name') ? localStorage.getItem('name') : ''
+  console.log(name);
+  var key = ""
+  if (name == '') {
+    alert('Please first login you ....');
+    window.location.href = "login.html";
+  }
+  function Logout() {
+    localStorage.removeItem('name');
+    localStorage.removeItem('email');
+    window.location.href = "login.html";
+  }
+
+  $(document).ready(function () {
+
+    let data = new Array();
+    data = JSON.parse(localStorage.getItem("data")) ? JSON.parse(localStorage.getItem("data")) : []
+
+    $('#myfile1').on('change', function (e) {
+      var file = e.target.files[0];
+      console.log(file);
+      var reader = new FileReader(); reader.readAsDataURL(file);
+      var fileName = file.name;
+      reader.onload = function () {
+        var inputData = reader.result;
+        var replaceValue = (inputData.split(',')[0]);
+        var base64String = inputData.replace(replaceValue + ".", "");
+        // console.log(base64String);
+
+        key = genPassword()
+        alert("please note key otherwise data will be misplaced")
+        document.getElementById("password").innerHTML = "Please note the key for retreaving the data: " + key;
+
+
+        $('#txtAttachment').val(base64String);
+        data.push({
+          "name": fileName,
+          "fileString": base64String,
+          "key": key,
+        })
+        localStorage.setItem("data", JSON.stringify(data));
+        // console.log(JSON.parse(localStorage.getItem("data")));
+      }
+    });
+  });
+  function downloadPDF(data, filename) {
+
+    let ste = JSON.parse(localStorage.getItem("data"))[JSON.parse(localStorage.getItem("data")).findIndex(e => e.key == key)];
+    const linkSource = ste.fileString;
+    console.log(JSON.parse(localStorage.getItem("data")));
+    const downloadLink = document.createElement('a');
+    const fileName = ste.name;
+
+    downloadLink.href = linkSource;
+    downloadLink.download = fileName;
+    downloadLink.click();
+  }
+  function downloadFile() {
+    downloadPDF($('#txtAttachment').val(), "gg");
+  }
+
+  function genPassword() {
+    var chars = "ABCDEFGHJKLMNOPQRSTUVWXYZ0!@#$%&*123456789abcdefghijkmnopqrstuvwxyz";
+    var passwordLength = 10;
+    var password = "";
+    for (var i = 1; i <= passwordLength; i++) {
+      var randomNumber = Math.floor(Math.random() * chars.length);
+      password += chars.substring(randomNumber, randomNumber + 1);
+    }
+    return password;
+  }
+</script>
+
+</html>

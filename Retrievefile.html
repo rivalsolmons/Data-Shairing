@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>CSS Template</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<style>
+    nav {
+        height: fit-content;
+
+        color: black;
+    }
+
+    nav ul {
+        background-color: azure;
+        display: flex;
+        flex-direction: row;
+    }
+
+    nav li {
+
+        margin: 10px;
+        border: 2px solid rgb(248, 226, 226);
+        border-radius: 5px;
+        list-style: none;
+        height: 2%;
+
+    }
+
+    nav a {
+        font-size: 18px;
+        text-decoration: none;
+        color: black;
+    }
+
+    * {
+        box-sizing: border-box;
+
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* Style the header */
+    header {
+        background-color: rgb(48, 44, 44);
+        padding: 30px;
+        text-align: center;
+        font-size: 30px;
+        color: white;
+    }
+
+    div .input {
+        background: none;
+
+    }
+
+    .imageki {
+        margin: 0;
+        padding: auto;
+    }
+
+    img {
+        position: absolute;
+        width: 500px;
+        height: 626px;
+    }
+
+    img::before {
+        width: 0;
+        height: 0;
+    }
+
+
+    input {
+        font-size: x-large;
+        color: red;
+        width: 500px;
+        height: 60px;
+        border: 5px solid rgb(9, 10, 10);
+        border-radius: 20px;
+        padding: 25px;
+
+    }
+
+    element.style {
+        height: 30px;
+        padding: 1px;
+    }
+
+    button {
+        height: 50px;
+        width: 120px;
+        border-radius: 10px;
+        cursor: pointer;
+
+    }
+
+    #back-btn {
+        background-color: rgb(176, 10, 182);
+        color: blue;
+        font-size: large;
+        border: 4px solid blue;
+    }
+
+    #sub-btn {
+        background-color: rgb(50, 12, 218);
+        color: rgb(224, 19, 231);
+        font-size: large;
+        border: 3px solid rgb(176, 10, 182);
+    }
+
+    #Download {
+        cursor: pointer;
+        font-size: 35px;
+        border: 4px solid black;
+        padding: 10px;
+        border-radius: 10px;
+        text-decoration: none;
+    }
+
+    .genrate-key {
+        font-size: 30px;
+        cursor: pointer;
+        border-bottom: 4px solid black;
+        font-weight: bold;
+    }
+
+    .genrate-key:hover {
+        color: rgb(91, 4, 109);
+    }
+
+    .genrate-key:active {
+        color: rgb(22, 177, 35);
+    }
+
+    article {
+        position: unset;
+        margin-left: 30%;
+        float: right;
+        padding: 20px;
+        width: 70%;
+        background-color: #f1f1f1;
+        height: 626px;
+        /* only for demonstration, should be removed */
+    }
+
+    .Key {
+        background: rgb(160, 29, 138);
+    }
+
+    /* Clear floats after the columns */
+    section::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    article::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    img::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    /* Style the footer */
+    footer {
+        background-color: #777;
+        padding: 10px;
+        text-align: center;
+        color: white;
+    }
+
+    span {
+
+        float: right;
+        margin-right: 20px;
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+    /* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+    @media (max-width: 600px) {
+
+        nav,
+        article {
+            margin-top: 20%;
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    @media (max-width: 1000px) {
+
+
+        img {
+            width: 97.1%;
+            height: 145px;
+            ;
+        }
+    }
+
+    @media (min-width:400px) {
+
+
+        img {
+            width: 29%;
+            height: 626px;
+        }
+    }
+
+    @media (max-width: 100%) {
+
+
+        .Box {
+            width: 50%;
+
+        }
+    }
+</style>
+
+<body>
+
+    <nav>
+        <ul>
+            <li><a color: href="./home.html">Home</a></li>
+            <li><a href="./Retrievefile.html">Retrieve File</a></li>
+            <li><a href="./Uploadfile.html">Upload File</a></li>
+            <li><a href="./Registration.html">Signup</a></li>
+            <li><a href="./login.html">Login</a></li>
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            <li>
+
+                <h4>
+                    Welcome :
+                    <script>document.write(localStorage.getItem('name'));</script>
+                </h4>
+            </li>
+            <li> <button onclick="Logout();" style="float: right; cursor: pointer;">Logout</button></li>
+        </ul>
+
+
+        </ul>
+    </nav>
+
+    <header>
+        <h3>Cost-Effective Authentic and Anonymous Data Sharing with Forward Security</h3>
+    </header>
+
+    <section>
+        <div>
+            <img src="./img/side.jpg" alt="Girl in a jacket">
+
+            <article>
+                <h1 class="Key">
+                    <center>
+                        Enter Secret Key
+                    </center>
+                </h1>
+                <br>
+                <a href="home.html" target="_blank">
+                    <button id="back-btn" class="back">
+
+                        Back
+
+                    </button>
+                </a>
+                <br> <br> <br> <br>
+                <br>
+                <div class="input">
+                    <center>
+                        <input id="password" class="Box" name="pwd" type="text" placeholder="Enter Secret Key " />
+                    </center>
+                    <!-- <span><i onclick="genPassword()" class="genrate-key">
+                            Generate Key
+                        </i>
+                    </span> -->
+                    <br>
+                    <br>
+                    <center>
+                        <button id="sub-btn" onClick="downloadFile(document.getElementById('password').value)">
+                            Submit
+                        </button>
+                        <br>
+                        <br>
+                    </center>
+                </div><br>
+                <br>
+                <br>
+                <div>
+                    <!-- <button class="fa fa-download  Download" id="btnDownload" onClick="downloadFile()">
+                        Download exe</button> -->
+                    <!-- <center><a href="#" target="_blank" id="Download" onClick="downloadFile()"
+                            class="fa fa-download  Download">Download</a>
+                    </center> -->
+                </div>
+        </div>
+        </article>
+    </section>
+    <script>
+
+        let name = localStorage.getItem('name') ? localStorage.getItem('name') : ''
+        console.log(name);
+        if (name == '') {
+            alert('Please first login you ....');
+            window.location.href = "login.html";
+        }
+        function Logout() {
+            localStorage.removeItem('name');
+            localStorage.removeItem('email');
+            window.location.href = "login.html";
+        }
+        // for key generator 
+        var password = document.getElementById("password");
+
+        function genPassword() {
+            var chars = "ABCDEFGHJKLMNOPQRSTUVWXYZ0!@#$%&*123456789abcdefghijkmnopqrstuvwxyz";
+            var passwordLength = 10;
+            var password = "";
+            for (var i = 1; i <= passwordLength; i++) {
+                var randomNumber = Math.floor(Math.random() * chars.length);
+                password += chars.substring(randomNumber, randomNumber + 1);
+            }
+            document.getElementById("password").value = password;
+        }
+        // to download the base64 file in uploaded .pdf format
+        function downloadPDF(key) {
+            // console.log(key);
+            let ste = JSON.parse(localStorage.getItem("data"))[JSON.parse(localStorage.getItem("data")).findIndex(e => e.key == key)];
+            if (!ste) {
+                alert("enter valid key");
+                return
+            }
+            // console.log(ste, key, JSON.parse(localStorage.getItem("data")));
+            const linkSource = ste.fileString;
+            console.log(JSON.parse(localStorage.getItem("data")));
+            const downloadLink = document.createElement('a');
+            const fileName = ste.name;
+
+            downloadLink.href = linkSource;
+            downloadLink.download = fileName;
+            downloadLink.click();
+        }
+        function downloadFile(id) {
+            downloadPDF(id);
+        }
+    </script>
+
+</body>
+
+</html>

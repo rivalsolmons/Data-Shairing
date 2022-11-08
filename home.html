@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>about</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            background-color: azure;
+        }
+
+        body {
+            background-image: url(./img/side.jpg);
+            background-size: auto;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+
+
+
+        }
+
+        nav {
+            height: fit-content;
+
+            color: black;
+            text-align: center;
+        }
+
+        ul {
+            background-color: azure;
+            display: flex;
+            flex-direction: row;
+        }
+
+        li {
+            margin: 10px;
+            border: 2px solid rgb(241, 216, 216);
+            border-radius: 5px;
+            list-style: none;
+            color: green;
+        }
+
+        a {
+            font-size: 18px;
+            text-decoration: none;
+            color: black;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 75px;
+        }
+
+        .container {
+            position: relative;
+            text-align: center;
+            color: white;
+        }
+
+        .centered {
+            position: absolute;
+            top: 80%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.5em;
+            opacity: 0.8;
+            background-color: transparent;
+        }
+
+        /* Adding Media Queries*/
+        @media (max-width: 600px) {
+
+            nav,
+            article {
+                margin-top: 20%;
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        @media (max-width: 1000px) {
+            .centered {
+                top: 60%;
+            }
+
+            div {
+                font-size: 14px;
+            }
+        }
+
+        @media (min-width:725px) {
+            div {
+                font-size: 12px;
+            }
+
+            .centered {
+                top: 60%;
+            }
+        }
+
+        @media (max-width: 100%) {
+
+            div {
+                font-size: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a color: href="./home.html">Home</a></li>
+            <li><a href="./Retrievefile.html">Retrieve File</a></li>
+            <li><a href="./Uploadfile.html">Upload File</a></li>
+            <li><a href="./Registration.html">Signup</a></li>
+            <li><a href="./login.html">Login</a></li>
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            <li>
+
+                <h4>
+                </h4> Welcome :
+                <script>document.write(localStorage.getItem('name'));</script>
+                </h4>
+            </li>
+            <li> <button onclick="Logout();" style="border: none; color: red; cursor: pointer;">Logout</button></li>
+        </ul>
+
+    </nav>
+    <h1>Cost Effective Anonymous Data Sharing With Forward Security</h1>
+    <div class="container">
+        <img src="./img/side.jpg" alt="Girl in a jacket">
+        <div class="centered">Data sharing has never been easier with the advances of cloud computing, and an accurate
+            analysis on the
+            shared data
+            provides an array of benefits to both the society and individuals. Data sharing with a large number of
+            participants must
+            take into account several issues, including efficiency, data integrity and privacy of data owner. Ring
+            signature is a
+            promising candidate to construct an anonymous and authentic data sharing system. It allows a data owner to
+            anonymously
+            authenticate his data which can be put into the cloud for storage or analysis purpose.</div>
+
+    </div>
+
+
+
+</body>
+<script>
+    let name = localStorage.getItem('name') ? localStorage.getItem('name') : ''
+    console.log(name);
+    if (name == '') {
+        alert('Please first login you ....');
+        window.location.href = "login.html";
+    }
+    function Logout() {
+        localStorage.removeItem('name');
+        localStorage.removeItem('email');
+        window.location.href = "login.html";
+    }
+</script>
+
+</html>
